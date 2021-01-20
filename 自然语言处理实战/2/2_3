@@ -1,0 +1,7 @@
+python
+import nltk
+nltk.download('stopword')
+stop_words = nltk.corpus.stopwords.words('english')
+len(stop_words)
+# 远程主机强迫关闭了一个现有的连接。>
+## 计算机网络的方向也很重要

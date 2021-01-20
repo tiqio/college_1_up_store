@@ -1,0 +1,10 @@
+cd C:\Users\HP\Desktop\AI\numpy_stage_2\Logistic
+python
+from importlib import reload
+import logistic
+
+data,label = logistic.loadDataSet()
+weights = logistic.gradAscent(data,label)
+logistic.plotBestFit(weights)
+
+# from logistic import * 会阻碍reload的效果,因此需要以记事本记录指令

@@ -1,0 +1,22 @@
+cd C:\Users\HP\Desktop\AI\crawler_stage_3\trial
+python
+from importlib import reload
+import fangjia
+import requests
+import bs4
+import re
+import openpyxl
+
+url = "http://news.house.qq.com/a/20170702/003985.htm"
+res = fangjia.open_url(url)
+soup = bs4.BeautifulSoup(res.text, 'html.parser')
+content = soup.find(id="Cnt-Main-Article-QQ")
+target = content.find_all("p", style="TEXT-INDENT: 2em")
+target = iter(target)
+
+
+
+headers = {'user-agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Mobile Safari/537.36 Edg/87.0.664.60'}
+res = requests.get("https://movie.douban.com/top250", headers=headers)
+soup = bs4.BeautifulSoup(res.text, 'html.parser')
+targets = soup.find_all("div", class_="hd")

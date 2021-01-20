@@ -1,0 +1,6 @@
+python
+from nlpia.data.loaders import get_data
+# 这东西下载不了,可以在之后尝试朴素贝叶斯
+movies = get_data('hutto_movies')
+movies.head().round(2)
+movies.describe.round(2)

@@ -1,0 +1,17 @@
+python
+from itertools import permutations
+split = permutations("Good morning Rosa!".split(), 3)
+# 语序堆
+lines = [" ".join(combo) for combo in split]
+# 语序连在一起形成语句堆
+
+s = """Find textbooks with titles containing 'NLP',
+  or 'natural' and 'language', or 
+  'computational' and 'linguistics'."""
+len(set(s.split()))
+import numpy as np
+np.arange(1,12+1).prod()
+# factorial(12) = arange(1,13).prod()
+# prod是连乘操作,将所有的数据相乘,上方是语序堆的大小
+## 在这种情况下,语序就很重要了
+

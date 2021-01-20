@@ -1,0 +1,62 @@
+python
+sentence = """Thomas Jefferson began building Monticello at the 
+  age of 26."""
+sentence.split()
+str.split(sentence)
+
+import numpy as np
+token_sequence = str.split(sentence)
+vocab = sorted(set(token_sequence))
+# sorted以升序的方式将集合转化成列表
+## sort是列表专用排序函数,sorted是所有可迭代对象都能使用的排序函数
+','.join(vocab)
+num_tokens = len(token_sequence)
+vocab_size = len(vocab)
+# 词条的数量和词集的大小
+onehot_vectors = np.zeros([num_tokens, vocab_size], int)
+# numpy默认以float64存储数据,可以用int指定
+for i, word in enumerate(token_sequence):
+# enumerate:枚举类型,用于对列表进行索引的复合
+  onehot_vectors[i, vocab.index(word)] = 1
+
+import pandas as pd
+df = pd.DataFrame(onehot_vectors, columns=vocab)
+df[df == 0] = ''
+# 可以对所有数据进行整体操作
+
+num_rows = 3000 * 3500 * 15
+num_bytes = num_rows * 1000000
+# 假设有100万个词条并且有num_rows数目的行数
+## 假定每一个词占有一个字节
+num_bytes / 1e9
+_ / 1000
+# python交互模式下_是上一次的输出值
+
+sentence_bow = {}
+for token in sentence.split():
+  sentence_bow[token] = 1
+sorted(sentence_bow.items())
+
+import pandas as pd
+df = pd.DataFrame(pd.Series(dict([(token, 1) for token in sentence.split()])), columns=['sent']).T
+# Series是Pandas形式的字典,如果传入列表,会把索引当成键
+## 可以用DataFrame包装Series:1.可以作为矩阵操作(便于进行添加) 2.可以设置行和列的标注
+
+sentences = """Thomas Jefferson began building Monticello\
+  at the age of 26.\n"""
+sentences += """Construction was done mostly by local masons\ 
+  and carpenters.\n"""
+sentences += "He moved into the South Pavilion in 1770.\n"
+sentences += """Turning Monticello into a neoclassical masterpiece\
+  was Jefferson's obsession."""
+corpus = {}
+for i, sent in enumerate(sentences.split('\n')):
+  corpus['sent{}'.format(i)] = dict([[tok, 1] for tok in sent.split()])
+# 分句子进行拆解并产生对应的词袋
+
+# system pause ----------
+
+df = pd.DataFrame.from_records(corpus).fillna(0).astype(int).T
+# 将二维字典的数据转化成DataFrame,外索引成列,内索引成行
+df[df.columns[:10]]
+

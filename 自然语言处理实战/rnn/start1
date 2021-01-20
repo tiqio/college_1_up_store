@@ -1,0 +1,79 @@
+cd C:\Users\HP\Desktop\AI\nlp_stage_5\rnn
+python
+import rnn
+from importlib import reload
+
+# 进行数据的调用 
+dataset = rnn.pre_process_data('./aclImdb/train')
+# 总共有25000份标签和文本,已经被打乱
+vectorized_data = rnn.tokenize_and_vectorize(dataset)
+# 总共有25000份文本转化成的词向量列表(词向量可重复,维度是100)
+expected = rnn.collect_expected(dataset)
+# 总共有25000份标签
+split_point = int(len(vectorized_data) * .8)
+x_train = vectorized_data[:split_point]
+# 总共有20000份被打乱的文本词向量
+y_train = expected[:split_point]
+# 总共有20000份对应的标签 
+x_test = vectorized_data[split_point:]
+# 总共有5000份被打乱的文本词向量
+y_test = expected[split_point:]
+# 总共有5000份对应的标签 
+
+maxlen = 400
+batch_size = 32
+embedding_dims = 100
+epochs = 2
+
+import numpy as np
+x_train = rnn.pad_trunc(x_train, maxlen)
+x_test = rnn.pad_trunc(x_test, maxlen)
+# 需要进行填充或截断样本
+
+x_train = np.reshape(x_train, (len(x_train), maxlen, embedding_dims))
+# x_train = np.array(x_train)
+# 显然的,如果仅仅用array转化,会得到一样的维数(20000, 400, 100)
+y_train = np.array(y_train)
+x_test = np.reshape(x_test, (len(x_test), maxlen, embedding_dims))
+y_test = np.array(y_test)
+# 可以得到维数(5000, 400, 100)
+
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, Flatten, SimpleRNN
+num_neurons = 50
+# 可以设置神经元的数目
+model = Sequential()
+model.add(SimpleRNN(
+  num_neurons, return_sequences=True,
+  # 隐藏层的神经元设置为50个
+  input_shape=(maxlen, embedding_dims)
+  # 时长为400,每次投入一个100的向量(一个文档的词),通过隐藏层得到一个50维的向量,
+  ## 这个50维的向量就是输出向量,状态向量没有裸露
+))
+model.add(Dropout(0.2))
+model.add(Flatten())
+model.add(Dense(1, activation='sigmoid'))
+# 仿照CNN的平整化与线性处理来处理每个时刻上的
+
+# 编译循环神经网络
+model.compile('rmsprop', 'binary_crossentropy', metrics=['accuracy'])
+# 将测试训练程度的指标设置为accuracy
+model.summary()
+
+# 训练并保存模型
+model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs,\
+  validation_data=(x_test, y_test))
+  # 校验集是test
+# epoch:2, batch_size:32, one_epoch_train_times: 20000/32=625
+model_structure = model.to_json()
+with open("demo_simplernn_model.json", 'w') as json_file:
+  json_file.write(model_structure)
+
+----- system pause -----
+
+model.save_weights("demo_simplernn_weights1.h5")
+# 框架和参数都需要进行保存
+
+
+
+

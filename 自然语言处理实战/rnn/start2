@@ -1,0 +1,82 @@
+# 建立一个更大的网络
+cd C:\Users\HP\Desktop\AI\nlp_stage_5\rnn
+python
+import rnn
+from importlib import reload
+
+dataset = rnn.pre_process_data('./aclImdb/train')
+vectorized_data = rnn.tokenize_and_vectorize(dataset)
+expected = rnn.collect_expected(dataset)
+split_point = int(len(vectorized_data) * .8)
+x_train = vectorized_data[:split_point]
+y_train = expected[:split_point]
+x_test = vectorized_data[split_point:]
+y_test = expected[split_point:]
+
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, Flatten, SimpleRNN
+from keras.layers.wrappers import Bidirectional
+
+maxlen = 400
+embedding_dims = 100
+batch_size = 32
+epochs = 2
+num_neurons = 10
+# 100个神经元的扩大到双向的10个神经元
+
+import numpy as np
+x_train = rnn.pad_trunc(x_train, maxlen)
+x_test = rnn.pad_trunc(x_test, maxlen)
+
+# 数据的训练适配
+x_train = np.reshape(x_train, (len(x_train), maxlen, embedding_dims))
+y_train = np.array(y_train)
+x_test = np.reshape(x_test, (len(x_test), maxlen, embedding_dims))
+y_test = np.array(y_test)
+
+model = Sequential()
+model.add(Bidirectional(SimpleRNN(
+  num_neurons, return_sequences=True),
+  input_shape=(maxlen, embedding_dims)
+  # 和单向层不一样,一共有100个循环节,以100维的词向量输入,以10传递,以10*2的拼接进行输出
+  ## 双向层的参数共有10*10(前向的关键反馈参数)+10*10(后向的关键反馈参数)+(100+1)*10*2=2220
+))
+
+model.add(Dropout(0.2))
+model.add(Flatten())
+model.add(Dense(1, activation='sigmoid'))
+model.compile('rmsprop', 'binary_crossentropy', metrics=['accuracy'])
+model.summary()
+# RNN层的参数有100*100+(100+1)*100=20100
+# 前一个输入的状态向量有100*100的权重,作为RNN的关键反馈步骤
+
+model.fit(x_train, y_train, batch_size=batch_size,\
+  epochs=epochs, validation_data=(x_test, y_test))
+model_structure = model.to_json()
+with open("_2th_simplernn_model.json", 'w', encoding='utf-8') as json_file:
+  json_file.write(model_structure)
+
+----- system pause -----
+
+model.save_weights("_2th_simplernn_model.h5")
+# 层次数据格式,可以储存像参数一样的模型参数
+
+----- struct split -----
+
+# 对模型和模型参数的调用
+from keras.models import model_from_json
+with open("_2th_simplernn_model.json", 'r', encoding='utf-8') as json_file:
+  json_string = json_file.read()
+model = model_from_json(json_string)
+model.load_weights("_2th_simplernn_model.h5")
+
+# 将输入的文本通过RNN进行预测的优先适配
+sample_1 = "I hate that the dismal weather had me down for so long, when\
+  will it break! Ugh, when does happiness return? The sun is blinding and\
+  the puffy clouds are too thin. I can't wait for the weekend."
+vec_list = rnn.tokenize_and_vectorize([(1, sample_1)])
+test_vec_list = rnn.pad_trunc(vec_list, maxlen)
+test_vec = np.reshape(test_vec_list, (len(test_vec_list), maxlen, embedding_dims))
+y_pred = (model.predict(test_vec) > 0.5).astype("int32")
+# model.predict_classes(test)预测的是类别,打印出来的值就是类别号,主要被使用在多分类上
+## UserWarning: `model.predict_classes()` is deprecated and will be removed after 2021-01-01.

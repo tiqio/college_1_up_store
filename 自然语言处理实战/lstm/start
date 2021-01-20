@@ -1,0 +1,65 @@
+# 可以这么来引入其他文件夹里的文件
+import sys
+sys.path.append('..')
+from rnn import rnn
+
+----- struct split -----
+
+cd C:\Users\HP\Desktop\AI\nlp_stage_5\lstm
+python
+import lstm
+from importlib import reload
+
+# 训练数据和检验数据的引入
+dataset = lstm.pre_process_data(r'C:\Users\HP\Desktop\AI\nlp_stage_5\rnn\aclImdb\train')
+vectorized_data = lstm.tokenize_and_vectorize(dataset)
+expected = lstm.collect_expected(dataset)
+split_point = int(len(vectorized_data) * .8)
+x_train = vectorized_data[:split_point]
+y_train = expected[:split_point]
+x_test = vectorized_data[split_point:]
+y_test = expected[split_point:]
+
+# 模型超参数的设置
+maxlen = 400
+batch_size = 32
+embedding_dims = 100
+epochs = 2
+num_neurons = 50
+
+# 数据的填充和包装(格式适配)
+import numpy as np
+x_train = lstm.pad_trunc(x_train, maxlen)
+x_test = lstm.pad_trunc(x_test, maxlen)
+x_train = np.reshape(x_train, (len(x_train), maxlen, embedding_dims))
+y_train = np.array(y_train)
+x_test = np.reshape(x_test, (len(x_test), maxlen, embedding_dims))
+y_test = np.array(y_test)
+
+# 对模型的训练
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, Flatten, LSTM
+model = Sequential()
+model.add(LSTM(
+  num_neurons, return_sequences=True,
+  input_shape=(maxlen, embedding_dims)
+))
+# 一个LSTM元胞有四个神经元,每个神经元用拼接来形成信息串(在随机调整权重的情况下顺序并不重要),而用四种W|301+50|50来进行变化
+## f:遗忘门,u:更新门,o:输出门,c:记忆渠(可以对当前的信息进行记忆),从外部看和SimpleRNN没有什么区别
+model.add(Dropout(0.2))
+model.add(Flatten())
+model.add(Dense(1, activation='sigmoid'))
+model.compile('rmsprop', 'binary_crossentropy', metrics=['accuracy'])
+model.summary()
+model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs,\
+  validation_data=(x_test, y_test))
+
+# 保存模型
+model_structure = model.to_json()
+with open("./demo_lstm_model.json", 'w', encoding='utf-8') as json_file:
+  json_file.write(model_structure)
+
+----- system pause -----
+
+model.save_weights("./demo_lstm_model.h5")
+

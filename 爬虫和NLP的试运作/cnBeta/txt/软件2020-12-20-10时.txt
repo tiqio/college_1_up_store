@@ -1,0 +1,79 @@
+文章出处  文章内容  文章链接
+软件  COVID-19大流行并没有减缓 GNOME 40 的工作... 除了本周发布的 GTK 4.0，GNOME Shell 
+开发者还在继续推进一些可见的改进，计划在 2021 年桌面更新中进行。GNOME 
+Shell开发者关注的领域一直是提供更好的概览空间组织、更有用的启动和空状态、改进的触控板导航以及更有吸引力的应用浏览和启动体验。  https://www.cnbeta.com/articles/soft/1067931.htm
+软件  英特尔为其Iris Xe Max 
+DG1专用显卡发布了新的显卡驱动27.20.100.9039版本。到目前为止，宏碁等OEM厂商已经发布了搭载Iris Xe 
+Max专用显卡的笔记本。该驱动修复了此类机器上流行的视频转码应用Handbrake在使用Xe Max显卡时出现的错误。  https://www.cnbeta.com/articles/soft/1067921.htm
+软件  虽然是周末，但腾讯QQ团队在今天发布了iPhone版QQ 8.5，为iPhone用户也提供了与安卓版QQ相同的功能。iPhone版QQ 8.5也可以分屏查看会话中的文件，让用户可以边聊天边查看文件。  https://www.cnbeta.com/articles/soft/1067849.htm
+软件  如果你对即将到来的三星Galaxy S21感到非常兴奋，或者打算跳过这一代先不购买只想体验一下它的设计，那么由ThisisRydah上传的最新的三星Galaxy 
+S21默认壁纸不要错过。本次率先出现在网上的Galaxy S21系列壁纸集合包括12张高清壁纸、4张高清DeX壁纸以及6张高清锁屏壁纸。  https://www.cnbeta.com/articles/soft/1067663.htm
+软件  CNET编辑Scott Stein上周五晚上和Spatial的高管们一起尝试一款全新手机聊天应用Tele。他表示：“我期待着某种AR会议体验，人们似乎会漂浮在我的虚拟空间里。这并不完全是我所希望的。相反，我觉得自己是漂浮在别人的空间里。或者说，在第三个空间里。”  https://www.cnbeta.com/articles/soft/1067569.htm
+软件  Adobe今天推出了Spark社交媒体设计工具更新，将为该服务带来超过10000个新的设计资产。这次更新也带来了用户界面上的小变化，但在大多数情况下，你可以把设计资产看作是Spark中用户使用图标的延伸。  https://www.cnbeta.com/articles/soft/1067197.htm
+软件  赶在周五的发布会之前，GTK 开发博客已经抢先宣布了 GTK 4.0 开源工具包的正式到来。虽然没有与 GNOME 保持同步，但这至少可让开发团队在年底前腾出更多时间，为明年春季的 GNOME 40 的发布和移植做好准备。  https://www.cnbeta.com/articles/soft/1066899.htm
+软件  Netflix正在向其Android应用投入大量资源。该服务今年得到了可变的播放速度和屏幕锁定功能，现在看起来我们正在获得仅音频的背景播放功能。它可以帮助用户节省一些宝贵的移动数据流量，或者将手机放在口袋中即可聆听音频。  https://www.cnbeta.com/articles/soft/1066759.htm
+软件  迅雷11.1.4.1142正式版日前发布，在这一新版本中，对从迅雷7以来一直沿用至今的圆形悬浮窗进行了改版。新的悬浮窗更像一个立方体，有正在下载的任务时，右侧会展开一个简短的进度条。悬浮窗这一全新的设计可以更清晰的显示下载进度，视觉效果也炫酷不少。  https://www.cnbeta.com/articles/soft/1066651.htm
+软件  英伟达刚刚为微软 Windows 7 / 8 / 8.1 / 10 用户推出了 460.89 版（均为 64-bit）驱动程序更新，主要为玩家引入了对《Quake II RTX》（v1.4.0）的 Game Ready 支持。除了 Vulkan 光追，本次更新还引入了对 CUDA 11.2 的支持。遗憾的是，对于 GeForce RTX 1080 Ti 等显卡用户来说，可能仍会遇到桌面闪烁、游戏启动卡顿、黑平衡异常等问题。  https://www.cnbeta.com/articles/soft/1066525.htm
+软件  周一的时候，Signal 宣布了群组通话的一项功能更新。与该平台上的所有其它内容一样，群聊用户也将获得端到端加密加护。早在 今年 10 月，Signal 已经尝试过这一特性，并于现在正是推广到了 Android 和 iOS 客户端。除此之外，Signal 群聊呼叫体验并没有发生其它变化。  https://www.cnbeta.com/articles/soft/1066053.htm
+软件  TikTok的应用将首次出现在大屏幕电视上。TikTok12月14日宣布与三星合作，让该应用可在欧洲的某些智能电视型号上下载，并将在未来预装在新电视上当中。TikTok的电视体验将突出该应用上最受欢迎的内容，并且是对家庭友好的视频内容。  https://www.cnbeta.com/articles/soft/1065763.htm
+软件  上周末，百度网盘PC版迎来了新版，也许你已经注意到了，在新版中，百度网盘的首页进行了全新改版，更简洁了。此外，最新发布的百度网盘PC版7.0.9还新增了电脑端微信文件自动备份，避免聊天文件过期丢失。  https://www.cnbeta.com/articles/soft/1065547.htm
+软件  苹果推出M1处理器之后，iOS及Mac生态开始向着自家芯片倾斜，应用开发者也迅速跟进，包括腾讯这样的公司。日前QQ Mac版也升级了，加入了M1处理器支持。腾讯前两天发布了QQ For Mac的6.7.1版，主要有如下升级：  https://www.cnbeta.com/articles/soft/1064665.htm
+软件  Instagram今天推出了其TikTok的竞争对手Shopping in Reels。这项新功能是该公司在10月份宣布的，它是Instagram一系列购物相关更新的一部分。通过今天的发布，企业和创作者都可以在制作Reel短视频时为产品添加标签。  https://www.cnbeta.com/articles/soft/1064331.htm
+软件  Intel今天发布了27.20.100.9077版显卡驱动，采用了全新的安装程序框架、UI图形界面(测试版)，包括新设计的Intel LOGO，整体焕然一新。新驱动还修复了一大堆游戏、应用相关的Bug：  https://www.cnbeta.com/articles/soft/1064291.htm
+软件  根据移动数据和分析公司App Annie的年终预测，2020年消费者在iOS和Google Play上下载的应用将达到1300亿次，同比增长10%。该公司还预测，消费者在这两个应用商店的支出也将同比增长25%，到年底达到1120亿美元。通常情况下，大部分的下载增长都是由新兴市场引领的，但今年情况有所不同。  https://www.cnbeta.com/articles/soft/1063885.htm
+软件  作为期待多年的2020年第一PC大作，《赛博朋克2077》终于上市了，显卡驱动优化也马上到来。AMD 20.12.1版本发布之后，NVIDIA 
+460.79版本也来了。新驱动针对《赛博朋克2077》做了全方位支持和优化，号称可带来终极体验，包括光线追踪、DLSS抗锯齿。  https://www.cnbeta.com/articles/soft/1063849.htm
+软件  WordPress 5.6是2020年计划的最终主要发布版本，于2020年12月8日发布，它包括一些主要功能和更新，以及大量的次要增强功能和错误修复。作为该年度的第三大主要WordPress核心版本。WordPress 5.6的重点是改进WordPress块编辑器，增强安全性（特别是扩展自动更新），一些更改对安全性和兼容性具有直接影响。  https://www.cnbeta.com/articles/soft/1063829.htm
+软件  昨晚AMD的RX 6900 XT显卡正式上市了，售价7999元，性能可战RTX 3090显卡，后者售价11999元，便宜4000块钱，性价比相当高。新卡发布之后，AMD也随即发布了一版新驱动——Radeon Software Adrenalin 20.12.1 WHQL，正式支持了RX 6900 XT显卡，购买新卡的玩家可以第一时间升级了。  https://www.cnbeta.com/articles/soft/1063685.htm
+软件  本周，Microsoft Edge 浏览器迎来了首个 89 大版本的 Dev 更新，版本号升至 89.0.723.0 。新功能方面，Edge 89 首先在“密码设置”页面引入了针对已泄露的密码进行按需扫描的功能。其次，Edge 89 为预加载网站的 Cookies 和相关数据增设了许可。  https://www.cnbeta.com/articles/soft/1063683.htm
+软件  Phoronix 报道称，开源、跨平台的 Qt 软件包已正式迎来 6.0 大版本更新。本次更新带来了 Quick 3D 和其它图形堆栈改进，围绕 Vulkan 和其它现代图形 API 的更多工作，用于额外库的软件包管理器，下一代 QML 支持、C++ 17、工具、以及主机 / 平台等改进。  https://www.cnbeta.com/articles/soft/1063561.htm
+软件  基于Chromium内核的优秀浏览器的最新版Vivaldi 3.5今天更新，带来了新的标签管理方式、媒体播放的改进以及通过二维码分享URL的功能。Vivaldi 
+3.5的PC版本还带有更好的隐私保护。在Vivaldi 
+3.5中，用户现在有了更多关于标签管理的选择。通过这次更新，用户将可以在设置中选择让新的标签页在后台打开，这样当点击一个链接时，就不会从当前的标签页被带走。  https://www.cnbeta.com/articles/soft/1063331.htm
+软件  我们早些时候发布了三星正在为他们的Windows 10笔记本电脑开发一款相当不错的屏幕记录器应用。该应用被简单地称为三星屏幕记录器，可以满足绝大多数桌面用户的录屏需求。这款应用的特点是顶部应用栏始终处于开启状态，可以让你：  https://www.cnbeta.com/articles/soft/1063321.htm
+软件  流行好用的压缩工具，支持鼠标拖放及外壳扩展，完美支持 ZIP 档案，内置程序可以解开 
+CAB、ARJ、LZH、TAR、GZ、UUE、BZ2、JAR、ISO 
+等多种类型的压缩文件。重要提示：因ACE模块重大漏洞，WinRAR从5.70 beta 1始不再支持ACE格式压缩档。  https://www.cnbeta.com/articles/soft/1062713.htm
+软件  QQ PC版近日迎来了新版，在9.4.1版本中，主要新增了GIF热图搜索功能，方便用户搜索热图，聊天时与朋友们斗图乐趣无穷。  https://www.cnbeta.com/articles/soft/1062133.htm
+软件  微信 for Windows 3.1.0测试版发布，可以给群聊设置备注，还可以在聊天列表中不显示某个聊天，另外，可以在群里进行最多15人的语音和视频通话。感兴趣的用户可以更新体验一下，在“设置”-“关于微信”中“检查更新”，即可获取新版。  https://www.cnbeta.com/articles/soft/1062115.htm
+软件  去年，微软推出了ElectionGuard，一个旨在展示选举中投票过程安全性和经济性的投票系统。此后，这家科技巨头在GitHub上发布了这款软件，甚至在美国威斯康星州的一次选举中进行了试点。今天，微软强调了ElectionGuard在不同项目中的应用。  https://www.cnbeta.com/articles/soft/1061935.htm
+软件  Chrome87带来了前所未有的浏览体验。谷歌表示：“由于进行了大量的底层优化，本月发布的更新是近年来 Chrome 性能提升最为明显的”。这些改进包括将活动标签的优先级高于其他所有标签，将 CPU 使用率降低 5 倍，将电池寿命延长 1.25 小时。  https://www.cnbeta.com/articles/soft/1061231.htm
+软件  微软已经推出了一个新的Windows 10更新，应该可以解决一个令人沮丧的、长达数月的问题，这个问题一直使一些系统崩溃，出现蓝屏死亡（BSOD）错误。在Windows 10 2020年5月更新和2020年10月更新推出之后，一些用户不得不处理死亡蓝屏问题。微软承认了这个问题，并承诺它正在努力修复。经过长时间的延迟，微软终于推出了一个新的补丁，对关键问题进行了修复。  https://www.cnbeta.com/articles/soft/1061013.htm
+软件  WordPress - 全球广泛使用的知名免费开源网站博客程序。WordPress是一种使用PHP语言开发的博客平台，用户可以在支持PHP和MySQL数据库的服务器上架设自己的网站，也可以把WordPress 当作一个内容管理系统（CMS）来使用。WordPress 还是一个免费的开源项目，在GNU通用公共许可证下授权发布。  https://www.cnbeta.com/articles/soft/1060459.htm
+软件  lighttpd 1.4.55 发布了。lighttpd 是一个开源 Web 服务器软件，旨在提供一个专门针对高性能网站，安全、快速、兼容性好并且灵活的 Web Server 环境。具有非常低的内存开销，CPU 占用率低、性能好，以及丰富的模块等特点。  https://www.cnbeta.com/articles/soft/1060117.htm
+软件  最近很多朋友都向笔者表示了想要购买新MacBook的想法，一方面是由于M1芯片性能非常强劲，另一方面也在于想要体验一下macOS——Windows系统上的流氓软件弹窗，实在了忍无可忍了！macOS兼容了iOS
+ App后，生活娱乐方面的应用得到了很大程度的补足，而且没有莫名其妙的弹窗，这足以让不少用户产生从Windows生态转向macOS生态的意向。  https://www.cnbeta.com/articles/soft/1059439.htm
+软件  早在8月份，微软就宣布，在开发频道中的一些Windows内测者将开始在Windows 10设置应用界面顶部看到一些新东西。除了现有的OneDrive、Windows更新和微软奖励的快捷方式外，微软已经开始尝试在设置界面顶部中加入新的网页浏览快捷方式，不过我们相信它还没有覆盖到开发频道中的所有内测版本当中。  https://www.cnbeta.com/articles/soft/1057739.htm
+软件  Ubuntu 社区刚刚迎来了一款注重隐私体验，旨在取代 Google Chrome OS / Chromium OS，且采用 Mozilla Firefox 而非 Google Chrome / Chromium 的开源替代项目 —— 它就是 Ubuntu Web Remix 。感兴趣的朋友，已经可以通过 Linux.DarkPenguin.net 或 FossTottents.com 网站，下载它的首个稳定版本（20.04.1）。  https://www.cnbeta.com/articles/soft/1057523.htm
+软件  Kodi HTPC软件的前身是XBMC，Kodi 19在过去一年半的时间里一直在马不停蹄地开发，而本周末开发者觉得它已经跨过了测试版的门槛，大版本19"Matrix"的发布已经到达公开测试的状态，这意味着这款开源、跨平台HTPC软件的又一次重大更新。  https://www.cnbeta.com/articles/soft/1056725.htm
+软件  在众多HDD及SSD性能测试软件中，日本人开发的CrystalDiskMark（简称CDM)以小巧简洁著称，测试内容也很丰富，非常适合普通人使用，日前CDM
+ 8.0正式版已经发布下载了。相比之前的版本，CDM 8.0版在UI、界面及性能测试上都有所变化，支持了Win10黑暗模式，改进了UI库等等。  https://www.cnbeta.com/articles/soft/1056465.htm
+软件  苹果迅速更新了Windows迁移助手软件，加入了对macOS Big Sur的兼容性。正如iMore所发现的那样，该实用工具的2.3.0.0版本为希望将数据从Windows PC迁移到苹果最新Mac操作系统的用户提供了支持。  https://www.cnbeta.com/articles/soft/1056447.htm
+软件  我们应该已经接近Wine 5.xx开发版本的尾声了，某个Wine 6.0版本可能会在2021年初的某一个时间发布，但目前Wine 5.22已经发布了最新的功能升级，可以在Linux和macOS上更好地运行Windows程序和游戏。  https://www.cnbeta.com/articles/soft/1056187.htm
+软件  日前AMD发布了Radeon Software Adrenalin 2020 Edition 20.11.2显卡驱动，这是个可选升级的驱动，主要是支持了新显卡Radeon RX 6800、RX 6800 XT。此外，该驱动还添加了一条多点着色方面的Vulkan扩展，并优化了《魔兽世界：暗影国度》游戏性能。  https://www.cnbeta.com/articles/soft/1055641.htm
+软件  Rufus 是一个可以帮助格式化和创建可引导USB闪存盘的工具，它可以快速把 ISO 格式的系统镜像文件快速制作成可引导的 USB 启动安装盘，支持 Windows 或 Linux 启动。3.13 Beta 版本更新内容如下：   https://www.cnbeta.com/articles/soft/1053509.htm
+软件  Johnny Hughes宣布了CentOS 7.9的最新版2009，这并非CentOS的最新版，而是这一发行版的旧分支7.9升级后的当前版本，它是由Red Hat Enterprise Linux 7.9的源代码构建而成的。  https://www.cnbeta.com/articles/soft/1053171.htm
+软件  因为种种原因，现在使用QQ的越来越少，智能终端月活用户仅剩6.174亿，使用微信的越来越多，月活用户已达12.128亿，不过在办公场景中，微信仍有很多不方便的地方，比如聊天记录同步，比如聊天文件的保存。  https://www.cnbeta.com/articles/soft/1052681.htm
+软件  Cinebench本来是Cinema 
+4D中的一个3D性能测试工具，然而这几年已经成为AMD钦定最权威的CPU跑分软件了，Zen3之后更是成为单核性能的黄金标准，不服就来跑跑看。Cinebench 之前的R11.5、R15及R20版大家都很熟悉了，其中R20也发布了一年半多了，现在Maxon发布了Cinebench R23版，这一版升级还不少。  https://www.cnbeta.com/articles/soft/1052227.htm
+软件  微软正在努力使Outlook应用程序变得更好。几乎每个月，我们都能看到它带来了一些功能，而目前正在努力的功能之一是Outlook中用于分类邮件的"类别"栏目。据著名逆向工程师Alessandro
+ Paluzzi介绍，微软目前正在为微软Outlook Android应用开发一项名为"类别"的新功能。  https://www.cnbeta.com/articles/soft/1052155.htm
+软件  GitHub显然是绝大多数在线代码的家园。Python作为一种神奇而又通用的编程语言，已经被成千上万的开发者用来构建各种有趣而有用的项目。在下面的部分，我们将尝试涵盖GitHub上一些使用Python构建的最佳项目。  https://www.cnbeta.com/articles/soft/1051515.htm
+软件  据知情人士透露，日本软银集团正与韩国现代汽车公司进行谈判，拟出售旗下机器人制造商波士顿动力公司(Boston Dynamics)。这笔交易将使现代成为七年来波士顿动力公司的第三任东家。  https://www.cnbeta.com/articles/soft/1051269.htm
+软件  如果你是一名Chrome的熟客，那么应该对各类扩展程序得心应手。Chrome的精髓之一，就在于其丰富的扩展程序，安装后可以实现很多不可思议的功能。然而，这也带来了一个烦恼，就如同电脑装多了软件不好找一样，Chrome扩展程序装多了以后，长长的列表也会令人发懵……  https://www.cnbeta.com/articles/soft/1051253.htm
+软件  Checkra1n越狱已经更新，支持iOS 14.2. 该版本包括A10/A10X设备的官方支持和A11设备的有限支持（iPhone 8, iPhone 8 Plus, iPhone X），  https://www.cnbeta.com/articles/soft/1051209.htm
+软件  YouTube for iOS现在开始支持苹果最新智能手机上的HDR播放，即今年发布的四个型号iPhone 12、iPhone 12 mini、iPhone 12 Pro和iPhone 12 Pro Max。YouTube HDR增强功能已经存在了相当长的时间，iPhone X、iPhone XS和iPhone 11 Pro的用户一直在享受这一功能。  https://www.cnbeta.com/articles/soft/1051161.htm
+软件  Phoronix 报道称，旨在为 Linux 发行版用户带来 Razer 外设配置和监测支持的 OpenRazer 项目，刚刚迎来了最新的 2.9 版本。除了键盘、鼠标、耳机等硬件，OpenRazer 2.9 还支持更多 Razer 新设备，比如 Razer Atheris / Basilisk X HyperSpeed 无线鼠标，以及 2020 年初款 Rader Blade Stralth / 15 Base / 15 Advanced 笔记本。  https://www.cnbeta.com/articles/soft/1050969.htm
+软件  自2006年以来，Parallels一直是Mac用户在不重启计算机的情况下运行Windows，Linux或Mac上任何其他操作系统的第一解决方案。最新版本Parallels Desktop 16 现在比以往任何时候都快，并提供了许多令人兴奋的新功能。Parallels Desktop 官方特价100%真实有效。提供的优惠直接在Parallels在线商店使用。阅读下文，了解官方提供的Parallels Desktop 7折优惠！  https://www.cnbeta.com/articles/soft/1050821.htm
+软件  不知不觉，Windows 10面世已经5年多了。尽管这些年间，微软一直在Windows 
+10上加码，也增加了很多之前所没有的功能。但不得不说，就我个人而言，Windows 
+10的很多自带功能依旧十分难用。就拿最简单的搜索来说，大家平时谈论最多的还是Listary、everything这些第三方工具，甚至苹果的Spotlight也常有人提及，但回到Windows搜索，能说起的又有几个呢？  https://www.cnbeta.com/articles/soft/1050791.htm
+软件  AMD日前发布了新的显卡驱动，版本号为Radeon Software Adrenalin 2020 Edition 
+20.11.1，升级内容不多，主要是优化了四款新游戏，其中《Godfall》游戏性能提升了7%。Radeon Software 
+Adrenalin 2020 Edition 20.11.1驱动升级日志：  https://www.cnbeta.com/articles/soft/1050717.htm
+软件  英特尔发布了Windows 10的新版显卡驱动，版本号到达27.20.100.8935。这个版本最大的亮点是修复了上一个驱动版本导致《孤岛危机重制版》崩溃到桌面的问题。本次更新并没有增加对任何新游戏的支持，在游戏方面只指出了这一项改进，其它的改进有：  https://www.cnbeta.com/articles/soft/1050487.htm
+软件  AMD 刚刚推出了 2020 年 11 月的第一个图形驱动程序更新，它就是为四款即将推出的游戏带来支持的 Radeon Software Adrenalin 2020 Edition 20.11.1 。如果你想要通过红色小队的显卡，在 PC 上运行《尘埃 》5（11 月 6 日）、《刺客信条：英灵殿》（11 月 10 日）、《众神陨落》（11 月 12 日）、或《使命召唤：黑色行动冷战》（11 月 13 日），还请记得更新该版本以获得最佳游戏体验。  https://www.cnbeta.com/articles/soft/1050285.htm
+软件  微软Edge在升级到Chromium开源平台后，已经获得了相当多的追随者，而且在最新版本中也越来越好。微软Edge现在获得了一个新功能，据称可以帮助你找到最优惠的价格，并申请公开提供的优惠券。  https://www.cnbeta.com/articles/soft/1049785.htm
+软件  自优麒麟 20.04.1 发布后，官方一直积极从各个渠道汇总大家的反馈建议，并针对存在的问题进行记录和处理。对于系统使用过程中遇到的任何问题或者建议，欢迎大家通过系统中用户反馈程序、微信交流群、QQ交流群、官方邮箱、优麒麟社区论坛等方式反馈。  https://www.cnbeta.com/articles/soft/1049101.htm
+软件  谷歌浏览器Google Chrome正式版迎来v86第三个维护版本发布，详细版本号为v86.0.4240.183，上一个正式版v86.0.4240.111发布于10月21日，时隔13天Google又发布了新版Chrome浏览器，本次升级主要是更新了安全修复和稳定性改进及用户体验。  https://www.cnbeta.com/articles/soft/1048651.htm
+软件  为了庆祝秋季的到来，微软商店又免费提供了一套万圣节主题的南瓜Windows 10主题。官方将其描述为：现在是南瓜的时间，它们会发光，它们会笑，也带来了乐趣。在这个免费的Windows主题包将一次提供13张与万圣节以及秋季相关的节日图像。  https://www.cnbeta.com/articles/soft/1047587.htm

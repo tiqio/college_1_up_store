@@ -1,0 +1,14 @@
+cd C:\Users\HP\Desktop\AI\numpy_stage_2\bayes
+python
+from importlib import reload
+import bayes
+from bayes import *
+
+data,labels = loadDataSet()
+VocabList = createVocabList(data)
+trainMat = []
+for i in data:
+    trainMat.append(setOfWords2Vec(VocabList, i))
+
+p0Vect,p1Vect,pAbusive = trainNB0(trainMat, labels)
+

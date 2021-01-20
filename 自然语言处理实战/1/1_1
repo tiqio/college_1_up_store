@@ -1,0 +1,9 @@
+python
+# 向量空间模型
+from collections import Counter
+Counter("Guten Morgen Rosa".split())
+# 机器以这种方式产生的所有可能的向量成为向量空间
+# 这种表示文档,语句和词的模型成为向量空间模型
+## 它允许我们使用线性代数来对这些向量进行计算,使NLP流水线更强大
+### 自然语言处理系统常常被称为"流水线"
+ 

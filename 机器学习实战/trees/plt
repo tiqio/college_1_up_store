@@ -1,0 +1,17 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+fig = plt.figure(1, facecolor='white')
+
+plt.subplot(111, frameon=True)
+x = np.arange(0,3*np.pi,0.1)
+y = np.sin(x)
+plt.plot(x,y)
+plt.ylim(-2,2)
+
+plt.annotate('local max', xy=(0.5*np.pi, 1), 
+             xytext=(3, 1.5), 
+             arrowprops={'facecolor': 'black'},
+             )
+
+plt.show()

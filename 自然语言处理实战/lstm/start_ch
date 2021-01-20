@@ -1,0 +1,5 @@
+cd C:\Users\HP\Desktop\AI\nlp_stage_5\lstm
+python
+import lstm_ch
+from importlib import reload
+

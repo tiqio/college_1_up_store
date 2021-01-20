@@ -1,0 +1,25 @@
+python
+import re
+sentence = """Thomas Jefferson began building Monticello at the\
+  age of 26."""
+tokens = re.split(r'[-\s.,;!?]', sentence)
+# 对表达式进行编译可以加快运行速度,eg:xxx.split()
+
+[x for x in tokens if x not in '- \t\n.,;!?']
+# 字符串本质上就是一个字符数组
+
+# 与正则同等效果的nltk中的分词器
+from nltk.tokenize import RegexpTokenizer
+tokenizer = RegexpTokenizer(r'\w+|[0-9.]+|\S+')
+# Python正则表达式前的 r 表示原生字符串（rawstring），该字符串声明了引号中的内容表示该内容的原始含义，避免了多次转义造成的反斜杠困扰。
+# 就仅有正则的转义而没有Python解释器的转义了
+tokenizer.tokenize(sentence)
+
+# nltk是一个有效的分词器:2-gram
+from nltk.util import ngrams
+# 这里是在
+list(ngrams(tokens, 2))
+# ngram是在1-gram的基础上进行的组合
+## 如果不用list是一个莫名其妙的对象,需要进行形式转化
+two_grams = list(ngrams(tokens, 2))
+two_grams_co = [' '.join(x) for x in two_grams] 

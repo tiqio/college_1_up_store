@@ -1,0 +1,5 @@
+cd C:\Users\HP\Desktop\AI\numpy_stage_2\machine_learning_stage_1\Ada
+python
+from importlib import reload
+import Ada
+import adaboost

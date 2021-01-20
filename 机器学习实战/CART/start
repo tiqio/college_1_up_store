@@ -1,0 +1,33 @@
+cd C:\Users\HP\Desktop\AI\numpy_stage_2\machine_learning_stage_1\CART
+python 
+from importlib import reload
+from numpy import *
+import cart
+import treePlotter 
+set_printoptions(suppress=True, precision=2)
+# 关闭指数表示法,并设置显示的最低的精确度,但仍然以最精准的数值计算
+
+trainMat = cart.loadDataSet('bikeSpeedVsIq_train.txt')
+testMat = cart.loadDataSet('bikeSpeedVsIq_test.txt')
+# 回归树,效果中等
+myTree = cart.createTree(trainMat, ops=(1,20))
+cart.reSetTimes()
+yHat = cart.createForeCast(myTree, testMat[:, 0])
+corrcoef(yHat, testMat[:, 1], rowvar=0)[0,1]
+
+# 模型树
+myTreeM = cart.createTree(trainMat, cart.modelLeaf, cart.modelErr, ops=(1,20))
+yHatM = cart.createForeCast(myTreeM, testMat[:, 0], cart.modelTreeEval)
+corrcoef(yHatM, testMat[:, 1], rowvar=0)[0, 1]
+
+// ----------
+
+# 回归树
+#dataMat = cart.loadDataSet('ex2.txt')
+#dataMatTest = cart.loadDataSet('ex2test.txt')
+# 请使用cart.createTree(dataMat)创建树,叶函数,损失函数,ops=(1,4)为缺省值
+
+# 模型树
+#dataMatM = cart.loadDataSet('ex2.txt')
+# 请使用cart.createTree(dataMatM)创建树,叶函数,损失函数,ops=(1,4)为缺省值
+#treeM = cart.createTree(dataMatM, cart.modelLeaf, cart.modelErr, (1,10))

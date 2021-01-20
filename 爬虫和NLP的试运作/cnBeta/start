@@ -1,0 +1,18 @@
+cd C:\Users\HP\Desktop\AI\crawler_stage_3\cnBeta
+python
+import bayes
+from importlib import reload
+dataMat,labelMat = bayes.load_data()
+labels = ['影视', '音乐', '游戏', '动漫', '趣闻', '科学', '软件']
+myVocabList = bayes.createVocabList(dataMat)
+p_ci,cat_dict = bayes.get_p_ci(labels, labelMat)
+trainMat = bayes.map_(myVocabList, dataMat)
+pVect = bayes.trainNB0(trainMat, cat_dict)
+
+//-- txt\贝叶斯2020-12-20-16时.txt --//
+int = [int('软件'==i) for i in labelMat]应该可以,但不知道为什么用不成
+
+基于词典的完全映射至1(双射):
+trainMat = []
+for postinDoc in listOPosts:
+  trainMat.append(bayes.setOfWords2Vec(myVocabList, postinDoc))

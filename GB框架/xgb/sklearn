@@ -1,0 +1,58 @@
+cd Desktop\AI\competition_stage_4_!!\GB框架\xgboost包\demo\data
+python
+from xgboost import XGBClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_svmlight_file
+from sklearn.metrics import accuracy_score
+import matplotlib.pyplot as plt 
+import xgboost as xgb
+# 加载LibSVM格式数据模块
+X_train, y_train = load_svmlight_file('agaricus.txt.train')
+X_test, y_test = load_svmlight_file('agaricus.txt.test')
+num_round = 2
+
+# 使用sklearn而不是xgboost
+bst = XGBClassifier(max_depth=2, learning_rate=1, n_estimators=num_round, silent=True, objective='binary:logistic')
+bst.fit(X_train, y_train)
+
+seed = 7
+test_size = 0.33
+X_train_part, X_validate, y_train_part, y_validate = train_test_split(X_train, y_train, test_size=test_size, random_state=seed)
+# 分为训练集和验证集xxyy分布
+num_round = 100
+# 表示一共有100个分类器
+
+bst = XGBClassifier(max_depth=2, learning_rate=0.1, n_estimators=num_round, silent=True, objective='binary:logistic')
+eval_set = [(X_train_part, y_train_part), (X_validate, y_validate)]
+# 分开来计算eval_set的两个误差并把误差赋予固定的validation_n表示
+bst.fit(X_train_part, y_train_part, eval_metric=['error', 'logloss'], eval_set=eval_set, verbose=True)
+# eval_metric可以使用不同的误差判断标准进行评价,比如错误率和负对数似然,都可以表示损失程度
+xgb.plot_tree(bst, num_trees=0, rankdir='LR')
+plt.show()
+# 使用sklearn训练的树也可以用来画图
+
+# 显示学习曲线
+results = bst.evals_result()
+# eval并不是看着好玩,没有它就无法画图
+epochs = len(results['validation_0']['error'])
+# 这里计算的是eval_set第一个预测集,在100次基函数下'error'形式取到的最小误差(误差评估法则)
+# 奇怪,这里的误差到底是怎么算出来的???
+x_axis = range(0, epochs)
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.plot(x_axis, results['validation_0']['logloss'], label='Train')
+ax.plot(x_axis, results['validation_1']['logloss'], label='Test')
+# 在这种情况下,两种曲线结合的十分紧密,误差相差不大
+ax.legend()
+plt.ylabel('Log Loss')
+plt.title('XGBoost Log Loss')
+plt.show()
+
+fig, ax = plt.subplots()
+ax.plot(x_axis, results['validation_0']['error'], label='Train')
+ax.plot(x_axis, results['validation_1']['error'], label='Test')
+# 这种情况下,两种训练集的误差可以被很清楚的分开
+ax.legend()
+plt.ylabel('Classification Error')
+plt.title('XGBoost Classification Error')
+plt.show()

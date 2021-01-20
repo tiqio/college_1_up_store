@@ -1,0 +1,5 @@
+cd C:\Users\HP\Desktop\AI\numpy_stage_2\machine_learning_stage_1\trees
+python
+from importlib import reload
+import trees
+import treePlotter

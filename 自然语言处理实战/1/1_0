@@ -1,0 +1,24 @@
+python
+import re
+r = "(hi|hello|hey)\s*([a-z]*)"
+re.match(r, 'Hello Rosa', flags=re.IGNORECASE)
+# 标示:省略大小写
+re.match(r, "hi ho, hi ho, it's off to work ...", flags=re.IGNORECASE)
+re.match(r, "hey, what's up", flags=re.IGNORECASE)
+
+re_greeting = re.compile(r, flags=re.IGNORECASE)
+# 编译除输入字符串以外的格式
+my_names = set(['rosa', 'rose', 'chatty', 'chatbot', 'bot', 'chatterbot'])
+cur_names = set(['hal', 'you', 'u'])
+greeting_name = ''
+match = re_greeting.match(input())
+
+# system pause
+
+if match:
+  at_name = match.groups()[-1]
+  # 以列表的形式存储
+  if at_name in cur_names:
+    print("Good one.")
+  elif at_name.lower() in my_names:
+    print("Hi {}, How are you?".format(greeter_name))

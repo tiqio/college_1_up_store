@@ -1,0 +1,31 @@
+cd C:\Users\HP\Desktop\AI\nlp_stage_5\Word2vec
+python
+from gensim.models import word2vec
+# 这是还没有被训练过的词向量模型
+logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
+# logging.basicConfig是在进行日志的设置
+sentences = word2vec.LineSentence('./text8') 
+# 每一行对应一个句子（已经分词，以空格隔开），我们可以直接用LineSentence把txt文件转为所需要的格式
+# 这是训练词向量的必要的格式:对于较大的语料库，可以考虑直接从磁盘/网络传输句子的迭代。
+model = word2vec.Word2Vec(sentences, hs=1,min_count=1,window=3,size=100) 
+# sentences是需要训练的语料库,sg设置算法,默认CBOW,hs=1是使用HS方法,min_count: 可以对字典做截断. 词频少于min_count次数的单词会被丢弃掉, 默认值为5。
+## window： 为训练的窗口大小，8表示每个词考虑前8个词与后8个词（实际代码中还有一个随机选窗口的过程，窗口大小<=5)，默认值为5。size是指输出的词向量的维数
+model.save("word2vec.model")
+
+
+cd C:\Users\HP\Desktop\AI\nlp_stage_5\Word2vec
+python
+from gensim.models import word2vec
+model = word2vec.Word2Vec.load("word2vec.model")
+# 用word2vec来载入训练好的词向量
+# 训练是流式的,可以动态地从磁盘读取输入数据,而无需将整个语料库加载到RAM中,说明可以在之后继续训练模型
+# https://blog.csdn.net/shuihupo/article/details/85156544
+# 调用模型
+vector = model['computer'] 
+# 如果已经完成了模型的培训(即不再更新，只进行查询)，可以切换到KeyedVectors实例
+# 可以利用KeyedVectors 进行向量的读取
+word_vectors = model.wv
+# 在这种情况下进行调用可以直接显示出词向量
+del model
+# 可以在内存中进行变量的清除,而不影响该变量指向的对象,这可以保证命名空间的空旷,防止命名冲突
+

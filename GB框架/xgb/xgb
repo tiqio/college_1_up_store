@@ -1,0 +1,39 @@
+cd Desktop\AI\competition_stage_4_!!\GB框架\xgboost包\demo\data
+python
+import xgboost as xgb
+from sklearn.metrics import accuracy_score
+
+# libsvm format data的读入方式,直接用xgb的DMatrix
+# 用./的读入方式会出现错误
+dtrain = xgb.DMatrix('agaricus.txt.train')
+dtest = xgb.DMatrix('agaricus.txt.test')
+
+param = {'max_depth':3, 'eta':1, 'silent':0, 'objective':'binary:logistic'}
+# 不同的目标函数将会有缺省的评价指标
+num_round = 2
+
+bst = xgb.train(param, dtrain, num_round, evals=[(dtrain,'train'), (dtest,'test')])
+# TypeError: train() got an unexpected keyword argument 'eval_metric' 猜测本身存在指标,会排斥
+# num_round为Boosting的迭代计算次数
+
+train_preds = bst.predict(dtrain)
+train_predictions = [round(value) for value in train_preds]
+y_train = dtrain.get_label()
+# !!注意,能够存储数据的不止是纯粹式属性,还有方法型的属性
+train_accuracy = accuracy_score(y_train, train_predictions)
+print('Train Accuracy: %.2f%%' % (train_accuracy * 100.0))
+# 类似于转义,但是%的更加特殊
+
+preds = bst.predict(dtest)
+predictions = [round(value) for value in preds]
+y_test = dtest.get_label()
+test_accuracy = accuracy_score(y_test, predictions)
+print('Test Accuracy: %.2f%%' % (test_accuracy * 100.0))
+
+import matplotlib.pyplot as plt
+xgb.plot_tree(bst, num_trees=0)
+# 这里内置地使用了graphviz这个画图工具,所以需要安装
+plt.show()
+
+
+

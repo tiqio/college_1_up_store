@@ -1,0 +1,11 @@
+cd C:\Users\HP\Desktop\AI\numpy_stage_2\machine_learning_stage_1\CART
+python
+from importlib import reload
+from numpy import *
+import cart
+data = cart.loadDataSet('sine.txt')
+tree = cart.createTree(data, ops=(1.0, 10))
+testX = arange(min(data[:, 0]), max(data[:, 0]), 0.01)
+# 注意,testX正在以行向量的形式存在,需要将其转化为列向量
+# 不是自己写,没有大局观,就很难注意到这种格式错误
+labels = cart.createForeCast(tree, mat(testX).T)
