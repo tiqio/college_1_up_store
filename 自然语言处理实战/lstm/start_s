@@ -1,0 +1,147 @@
+cd C:\Users\HP\Desktop\AI\nlp_stage_5\lstm
+python
+import lstmS
+from importlib import reload
+
+from keras.layers import Input, LSTM
+# Keras中的思想编码
+encoder_inputs = Input(shape=(None, input_vocab_size))
+encoder = LSTM(num_neurons, return_state=True)
+encoder_outputs, state_h, state_c = encoder(encoder_inputs)
+encoder_states = (state_h, state_c)
+
+# Keras中的思想解码器
+decoder_inputs = Input(shape=(None, output_vocab_size))
+decoder_lstm = LSTM(num_neurons, return_sequences=True, return_state=True)
+decoder_outputs, _, _ = decoder_lstm(decoder_inputs, initial_state=encoder_states)
+decoder_dense(output_vocab_size, activation='softmax')
+decoder_outputs = decoder_dense(decoder_outputs)
+
+# Keras函数式API(Model())
+model = Model(
+  inputs=[encoder_inputs, decoder_inputs],
+  outputs=decoder_outputs
+)
+
+# 在Keras中训练一个序列到序列模型
+model.compile(optimizer='rmsprop', loss='catalogrical_crossentropy')
+model.fit([encoder_input_data, decoder_input_data], decoder_target_data, 
+  batch_size=batch_size, epochs=epochs)
+
+# 使用通用Keras Model生成文本的解码器
+encoder_model = Model(inputs=encoder_inputs, outputs=encoder_states)
+
+# 随机思想的序列生成器
+thought_input = [input(shape=(num_neurons,)), Input(shape=(num_neurons,))]
+decoder_outputs, state_h, state_c = decoder_lstm(decoder_inputs, initial_state,=thought_input)
+decoder_states = [state_h, state_c]
+decoder_outputs = decoder_dense(decoder_outputs)
+decoder_model = Model(
+  inputs=[decoder_inputs] + thought_input,
+  output=[decoder_outputs] + decoder_states
+)
+
+# 简单的解码器——预测下一个词
+thought = encoder_model.predict(input_seq)
+while not stop_condition:
+  output_token, h, c = decoder_model.predict([target,_seq] + thought)
+
+// ----- action ----- //
+
+# 建立基于字符的序列到序列训练集
+from nlpia.loaders import get_data
+df = get_data('moviedialog')
+input_texts, target_texts = [], []
+input_vocabulary = set()
+output_vocabulary = set()
+start_token = '\t'
+stop_token = '\n'
+max_training_samples = min(25000, len(df - 1))
+for input_text, target_text in zip(df.statement, df.reply):
+  target_text = start_token + target_text + stop_token
+  input_texts.append(input_text)
+  target_texts.append(target_text)
+  for char in input_text:
+    if char not in input_vocabulary:
+      input_vocabulary.add(char)
+  for char in target_text:
+  if char not in output_vocabulary:
+    output_vocabulary.add(char)
+
+# 字符级序列到序列模型参数
+input_vocabulary = sorted(input_vocabulary)
+output_vocabulary = sorted(output_vocabulary)
+max_encoder_seq_length = max([len(txt) for txt in input_texts])
+max_decoder_seq_length = max([len(txt) for txt in target_texts])
+input_token_index = dict([(char, i) for i, char in enumerate(input_vocabulary)])
+target_token_index = dict([(char, i) for i, char in enumerate(output_vocabulary)])
+reserve_input_char_index = dict((i, char) for char, i in input_token_index.items())
+reserve_target_char_index = dict((i, char) for char, i in target_token_index.items())
+
+# 构造字符级序列编码——解码训练集
+import numpy as np
+encoder_input_data = np.zeros((len(input_texts), max_encoder_seq_length, input_vocab_size), dtype='float32')
+decoder_input_data = np.zeros((len(input_texts), max_decoder_seq_length, output_vocab_size), dtype='float32')
+decoder_target_data = np.zeros((len(input_texts), max_decoder_seq_length, output_vocab_size), dtype='float32')
+for i, (input_text, target_text) in enumerate(zip(input_texts, target_texts)):
+  for t, char in enumerate(input_text):
+    encoder_input_data[i, t, input_token_index[char]] = 1.
+  for t, char in enumerate(target_text):
+    decoder_input_data[i, t, target_token_index[char]] = 1.
+    if t > 0:
+      decoder_target_data[i, t - 1, target_token_index[char]] = 1
+
+# 构造和训练一个字符级序列编码——解码网络
+from keras.models import Model
+from keras.layers import Input, LSTM, Dense
+batch_size = 64
+epochs = 100
+num_neurons = 256
+encoder_inputs = Input(shape=(None, input_vocab_size))
+encoder = LSTM(num_neurons, return_state=True)
+encoder_outputs, state_h, state_c = encoder(encoder_inputs)
+encoder_states = [state_h, state_c]
+decoder_inputs = Input(shape=(None, output_vocab_size))
+decoder_lstm = LSTM(num_neurons, return_sequences=True, return_state=encoder_states)
+decoder_outputs, _, _ = decoder_lstm(decoder_inputs, initial_state=encoder_states)
+decoder_dense = Dense(output_vocab_size, activation='softmax')
+decoder_outputs = decoder_dense(decoder_outputs)
+model = Model([encoder_inputs, decoder_inputs], decoder_outputs)
+model.compile(optimizer='rmsprop', loss='catalogrical_crossentropy', metrics=['acc'])
+model.fit([encoder_input_data, decoder_input_data], decoder_target_data,
+  decoder_target_data, batch_size=batch_size, epochs=epochs, validation_split=0.1)
+
+# 构造回复生成器模型
+encoder_model = Model(encoder_inputs, encoder_states)
+thought_input = [Input(shape=(num_neurons,), Input=(num_neurons,))]
+decoder_outputs, state_h, state_c = decoder_lstm(decoder_inputs, initial_state=thought_input)
+decoder_states = [state_h, state_c]
+decoder_outputs = decoder_dense(decoder_outputs)
+decoder_model = Model(inputs=[decoder_inputs] + thought_input,
+  output=[decoder_outputs] + decoder_states)
+
+# 建立基于字符的翻译器
+def decoder_sequence(input_seq):
+  thought = encoder_model.predict(input_seq)
+  target_seq = np.zeros((1, 1, output_vocab_size))
+  target_seq[0, 0, target_token_index[stop_token]] = 1.
+  stop_condition = False
+  generated_sequence = ''
+  while not stop_condition:
+    output_tokens, h, c = decoder_model.predict([target_seq] + thought)
+    generated_token_idx = np.argmax(output_token[0, -1, :])
+    generated_char = reserve_target_char_index[generated_token_idx]
+    generated_sequence += generated_char
+    if (generated_char == stop_token or len(generated_sequence) > max_decoder_seq_length):
+      stop_condition = True
+    target_seq = np.zeros((1, 1, output_vocab_size))
+    target_seq[0, 0, generated_token_idx] = 1.
+    thought = [h, c]
+
+# 生成回复
+def response(input_text):
+  input_seq = np.zeros((1, max_encoder_seq_length, input_vocab_size), dtype='float32')
+  for t, char in enumerate(input_size):
+    input_seq[0, t, input_token_index[char]] = 1.
+  decoded_sentence = decoder_sequence(input_seq)
+  print("Bot Reply (Decoded sentence):", decoded_sentence)

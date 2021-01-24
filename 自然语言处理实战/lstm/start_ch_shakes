@@ -1,0 +1,97 @@
+cd C:\Users\HP\Desktop\AI\nlp_stage_5\lstm
+python
+import lstmCh
+from importlib import reload
+
+from nltk.corpus import gutenberg
+# https://blog.csdn.net/zln_whu/article/details/103448420
+# https://blog.csdn.net/sjxgghg/article/details/109404844
+# gutenberg.fileids()包含莎士比亚的三部戏剧文本
+text = ''
+for txt in gutenberg.fileids():
+  if 'shakespeare' in txt:
+    text += gutenberg.raw(txt).lower()
+    # 进行文本的拼接,通过raw形成了文本字符串
+// ----- system pause ----- //
+chars = sorted(list(set(text)))
+# 将集合转化为唯一顺序的列表,这是在进行one-hot的构造
+char_indices = dict((c, i) for i, c in enumerate(chars))
+# 为索引建立一个字典,可以在变化时使用
+indices_char = dict((i, c) for i, c in enumerate(chars))
+# 在把一个独热编码转化为字符并进行理解上很重要
+print("corpus length: {}  total: {}".format(len(text), len(chars)))
+# 对应语料库的大小和槽的深度
+
+# ----- 半冗余序列的构建 -----
+maxlen = 40
+step = 3
+sentences = []
+next_chars = []
+for i in range(0, len(text) - maxlen, step): # 文本的切片数量x:step*(x-1)+maxlen=len(text)
+  sentences.append(text[i, i+maxlen])
+  next_chars.append(text[i+maxlen])
+print("len(sentences)=", len(sentences))
+
+X = np.zeros((len(sentences), maxlen, len(chars)), dtype=np.bool)
+y = np.zeros((len(sentences), len(chars)), dtype=np.bool)
+for i, sentences in enumerate(sentences):
+  for t, char in enumerate(sentences):
+    X[i, t, char_indices[char]] = 1
+    # 一个萝卜一个坑,t是对maxlen的遍历
+  y[i, char_indices[next_chars[i]]] = 1
+  # 是对每个半冗余块样本的槽的填充,每片槽的宽度只有一,所以省略了二维
+
+# ----- 组装基于字符的LSTM模型来生成文本(lstmCh文本生成器) -----
+from keras.models import Sequential
+from keras.layers import Dense, Activation, LSTM
+from keras.optimizeres import RMSprop # 均方根传递下降法
+model.Sequential()
+model.add(LSTM(128, input_shape=(maxlen, len(chars))))
+# 共有128个神经元接收len(chars)长度的信息,maxlen为元胞的数量,return_sequences默认为False
+## 注意这里没有Dropout, 因为在字符级建模时,过拟合是被允许的
+model.add(Dense(len(chars)))
+# 进行全连接并完成softmax概率化
+model.add(Activation('softmax'))
+optimizer = RMSprop(lr=0.01)
+# 使用定制的优化器参数,而不是用默认的lr=0.001
+model.compile(loss='categorical_crossentropy', optimizer=optimizer)
+# 使用了多分类的交叉熵,而不是binary_crossentropy
+model.summary()
+
+# ----- 训练一个莎士比亚风格的聊天机器人 -----
+epochs = 6
+batch_size = 128
+model_structure = model.to_json()
+with open("shakes_lstm_model.json", 'w') as json_file:
+  json_file.write(model_structure)
+for i in range(5):
+  model.fit(X, y, batch_size=batch_size, epochs=epochs)
+  model.save_weights("shakes_lstm_weights_{}.h5".format(i+5))
+  # 针对一个系统内的模型参数进行训练,每隔六个训练周期保存一次,直到损失不再减少,就表示完全了
+
+# 使用三种多样化等级产生三种类型文本
+import sys
+start_index = random.randient(0, len(text) - maxlen - 1)
+for diversity in [0.2, 0.5, 1.0]:
+  print()
+  print('----- diversity:', diversity)
+  generated = ''
+  sentence = text[start_index: start_index + maxlen]
+  generated += sentence
+  print('----- Generating with seed: "'+ sentence + '"')
+  sys.stdout.write(generated) # 将长为maxlen的半冗杂块用sys进行打印
+  for i in range(400):
+  # 每一次循环都是在当前选定的冗杂块的基础上预测下一个词,但越往后越脱离训练集
+    x = np.zeros((1, maxlen, len(chars)))
+    for t, char in enumerate(sentence):
+      x[0, t, char_indices[char]] = 1.
+    preds == model.predict(x, verbose=0)[0]
+    # preds是一个len(chars)长度的输出,verbose未知
+    next_index = sample(preds, diversity) 
+    next_char = indices_char[next_index]
+    # 可以找到这个半冗杂块对应的下一个字符
+    sentence = sentence[1:] + next_char
+    sys.stdout.write(next_char)
+    sys.stdout.flush()
+print()
+
